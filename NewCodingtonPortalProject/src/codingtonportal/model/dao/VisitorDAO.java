@@ -2,194 +2,236 @@ package codingtonportal.model.dao;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import codingtonportal.model.domain.Visitor;
 import codingtonportal.model.interfaces.dao.IVisitor;
+import codingtonportal.utils.DatabaseProperty;
 import codingtonportal.utils.FERSDataConnection;
 
 
 
 public class VisitorDAO implements IVisitor {
 
-	public void insertvisitor(Visitor visitor) throws ClassNotFoundException  {  
-		FERSDataConnection conex= new FERSDataConnection(); 
-		 try {    
-		Statement estatuto = conex.getConnection().createStatement();
-		 estatuto.executeUpdate("INSERT INTO users VALUES (" +
-		 		+visitor.getIdUser()+"," +
-		 		"'"+visitor.getFirstName()+"'," +
-		 		"'"+visitor.getLastName()+"'," +
-		 		"'"+visitor.getDni()+"'," +
-		 		"'"+visitor.getEmail()+"',"+
-		 		"'"+visitor.getPhoneNumber()+"',"+
-		 		"'"+visitor.getAddress()+"',"+
-		 		"'"+visitor.getUserName()+
-		 		"'"+visitor.getPassword()+
-		 		"'"+visitor.isAdmin()+"')"); 
-		//JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE); 
-		 estatuto.close();  
-		 conex.close();    
+	public void insertvisitor(Visitor visitor) throws IOException, ClassNotFoundException   {  
+	
+			 FERSDataConnection conex= new FERSDataConnection(); 
+			 DatabaseProperty conexion= new DatabaseProperty();
+			 try {    
+			//PreparedStatemnt for dynamic data	 
+			PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("insertVisitor"));
+			
+			statementSQL.setInt(1, visitor.getIdUser());
+			statementSQL.setString(2, visitor.getFirstName());
+			statementSQL.setString(3, visitor.getLastName());
+			statementSQL.setString(4, visitor.getDni());
+			statementSQL.setString(5, visitor.getEmail());
+			statementSQL.setString(6, visitor.getPhoneNumber());
+			statementSQL.setString(7, visitor.getAddress());
+			statementSQL.setString(8, visitor.getUserName());
+			statementSQL.setString(9, visitor.getPassword());
+			statementSQL.setBoolean(10, visitor.isAdmin());
+	
+			statementSQL.executeQuery();
+			statementSQL.close();
+			conex.close();		     
+		
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
 			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
 			 }  
 		 } 
 	
-	
-	
 
-
-	public void loginvisitor(String Username, String Password) {
+	public void loginvisitor(String Username, String Password) throws ClassNotFoundException, IOException {
+		
 		FERSDataConnection conex= new FERSDataConnection(); 
-		 try {    
-		Statement estatuto = conex.getConnection().createStatement();
-		 estatuto.executeUpdate("SELECT Username, Password FROM Users WHERE Username= "+Username+ " AND Password="+Password+";"); 
-		//JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE); 		 estatuto.close();  
-		 conex.close();    
+		DatabaseProperty conexion= new DatabaseProperty();
+		try {    
+		//PreparedStatemnt for dynamic data	 
+		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("loginVisitor"));
+		
+		
+		statementSQL.setString(1, Username);
+		statementSQL.setString(2, Password);
+		
+
+		statementSQL.executeQuery();
+		statementSQL.close();
+		conex.close();		     
+
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
-			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
-			 }  
-		
-		
+		}  	
 	}
 
 
-	public void deletevisitor(Visitor visitor) {
+	public void deletevisitor(Visitor visitor) throws IOException, ClassNotFoundException {
 	
-		ConnectionDB conex= new ConnectionDB(); 
-		 try {    
-		Statement estatuto = conex.getConnection().createStatement();
-		 estatuto.executeUpdate("DELETE FROM users WHERE idUser="+visitor.getIdUser()+";");		 
-		 //JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE); 
-		 estatuto.close();  
-		 conex.closeConnection();    
+		
+		FERSDataConnection conex= new FERSDataConnection(); 
+		DatabaseProperty conexion= new DatabaseProperty();
+		try {    
+		//PreparedStatemnt for dynamic data	 
+		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("deleteVisitor"));
+		
+		statementSQL.setInt(1, visitor.getIdUser());
+		
+		statementSQL.executeQuery();
+		statementSQL.close();
+		conex.close();		     
+	  
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
-			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
+			
 			 }  	
 	}
 
 
 
-	public void updateinformation(Visitor visitor) {
+	public void updateinformation(Visitor visitor) throws ClassNotFoundException, IOException {
 	
-		ConnectionDB conex= new ConnectionDB(); 
+		 FERSDataConnection conex= new FERSDataConnection(); 
+		 DatabaseProperty conexion= new DatabaseProperty();
 		 try {    
-		Statement estatuto = conex.getConnection().createStatement();
-		 estatuto.executeUpdate("UPDATE FROM users SET (" 
-		 		+"First_name="+visitor.getFirstName()+"'," 
-		 		+"Last_name="+visitor.getLastName()+"', " 
-		 		+"DNI="+visitor.getDni()+"'," 
-		 		+"Email="+visitor.getEmail()+"'," 
-		 		+"Phone_number="+visitor.getPhoneNumber()+"'," 
-		 		+"Address="+visitor.getAddress()+"'," 
-		 		+"Password="+visitor.getPassword()+") WHERE idUser="+visitor.getIdUser()+";");	
-		 		
-		 //JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE); 
-		 estatuto.close();  
-		 conex.closeConnection();    
+		//PreparedStatemnt for dynamic data	 
+		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("updateVisitor"));
+	
+		statementSQL.setString(1, visitor.getFirstName());
+		statementSQL.setString(2, visitor.getLastName());
+		statementSQL.setString(3, visitor.getDni());
+		statementSQL.setString(4, visitor.getEmail());
+		statementSQL.setString(5, visitor.getPhoneNumber());
+		statementSQL.setString(6, visitor.getAddress());
+		statementSQL.setString(7, visitor.getPassword());
+		//Where
+		statementSQL.setInt(8, visitor.getIdUser());
+		
+		statementSQL.executeQuery();
+		statementSQL.close();
+		conex.close();		     
+		
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
-			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
+			
+			 }  		
+	}
+
+
+
+	public void updatepassword(Visitor visitor) throws IOException, ClassNotFoundException {
+		
+		 FERSDataConnection conex= new FERSDataConnection(); 
+		 DatabaseProperty conexion= new DatabaseProperty();
+		 try {    
+		//PreparedStatemnt for dynamic data	 
+		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("updatepassword"));
+	
+		
+		statementSQL.setString(1, visitor.getPassword());
+		//Where
+		statementSQL.setInt(2, visitor.getIdUser());
+		
+		statementSQL.executeQuery();
+		statementSQL.close();
+		conex.close();		     
+	
+		 } catch (SQLException e) {         
+			 System.out.println(e.getMessage());  
+			
 			 }  	
 		
 		
-		
 	}
 
 
 
-	public void updatepassword(Visitor visitor) {
-		ConnectionDB conex= new ConnectionDB(); 
+	public void registerevent(int IdUser, int IdEvent) throws ClassNotFoundException, IOException {
+		
+		 FERSDataConnection conex= new FERSDataConnection(); 
+		 DatabaseProperty conexion= new DatabaseProperty();
 		 try {    
-		Statement estatuto = conex.getConnection().createStatement();
-		 estatuto.executeUpdate("UPDATE FROM users SET (" 
-			 		+"Password="+visitor.getPassword()+") WHERE idUser="+visitor.getIdUser()+";");	
-		 //JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE); 
-		 estatuto.close();  
-		 conex.closeConnection();    
+		//PreparedStatemnt for dynamic data	 
+		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("registerevent"));
+	
+		
+		statementSQL.setInt(1, IdUser);
+		statementSQL.setInt(2, IdEvent);
+		
+		statementSQL.executeQuery();
+		statementSQL.close();
+		conex.close();		     
+		
+		 } catch (SQLException e) {         
+			 System.out.println(e.getMessage());  	  
+	 } 
+	}
+
+
+
+	public void unregisterevent(int IdUser, int IdEvent) throws IOException, ClassNotFoundException {
+		
+		 FERSDataConnection conex= new FERSDataConnection(); 
+		 DatabaseProperty conexion= new DatabaseProperty();
+		 try {    
+		//PreparedStatemnt for dynamic data	 
+		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("unregisterevent"));
+	
+		
+		statementSQL.setInt(1, IdUser);
+		statementSQL.setInt(2, IdEvent);
+		
+		statementSQL.executeQuery();
+		statementSQL.close();
+		conex.close();		     
+		
+		 
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
-			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
+			 
+	  }  	
+	}
+
+	
+	public void searchevent(String Search) throws IOException, ClassNotFoundException {
+		
+		
+		FERSDataConnection conex= new FERSDataConnection(); 
+		 DatabaseProperty conexion= new DatabaseProperty();
+		 try {    
+		//PreparedStatemnt for dynamic data	 
+		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("searchevent"));
+	
+		statementSQL.setString(1, Search);
+		
+		statementSQL.executeQuery();
+		statementSQL.close();
+		conex.close();		     
+
+		 } catch (SQLException e) {         
+			 System.out.println(e.getMessage());  
+			  
 			 }  	
-		
-		
 	}
 
 
-
-	public void registerevent(int IdUser, int IdEvent) {
-		ConnectionDB conex= new ConnectionDB(); 
+	public void viewevent() throws ClassNotFoundException, IOException {
+		
+		FERSDataConnection conex= new FERSDataConnection(); 
+		 DatabaseProperty conexion= new DatabaseProperty();
 		 try {    
-		Statement estatuto = conex.getConnection().createStatement();
-		 estatuto.executeUpdate("INSERT INTO  EventRegistration VALUES (" +
-		 		+IdUser+"," +
-		 		"'"+IdEvent+";')"); 
-		//JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE); 
-		 estatuto.close();  
-		 conex.closeConnection();    
-		 } catch (SQLException e) {         
-			 System.out.println(e.getMessage());  
-			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
-			 }  
-		
-	}
-
-
-
-	public void unregisterevent(int IdUser, int IdEvent) {
-		ConnectionDB conex= new ConnectionDB(); 
-		 try {    
-		Statement estatuto = conex.getConnection().createStatement();
-		 estatuto.executeUpdate("DELETE FROM  EventRegistration  WHERE IdUser= "+IdUser+ " AND IdEvent="+IdEvent+";"); 
-		//JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE); 
-		 estatuto.close();  
-		 conex.closeConnection();    
-		 } catch (SQLException e) {         
-			 System.out.println(e.getMessage());  
-			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
-			 }  
-		
-	}
-
-
+		//PreparedStatemnt for dynamic data	 
+		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("viewevent"));
 	
-	public void searchevent(String Search) {
-		ConnectionDB conex= new ConnectionDB(); 
-		 try {    
-		Statement estatuto = conex.getConnection().createStatement();
-		 estatuto.executeUpdate("SELECT * FROM event  WHERE Name LIKE '%'" + Search + "'%' ;"); 
-		//JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE); 
-		 estatuto.close();  
-		 conex.closeConnection();   
+		statementSQL.executeQuery();
+		statementSQL.close();
+		conex.close();		     
+		
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
-			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
-			 }  
-		
-		
+			 
+			 } 	
 	}
-
-
-
-	public void viewevent() {
-		ConnectionDB conex= new ConnectionDB(); 
-		 try {    
-		Statement estatuto = conex.getConnection().createStatement();
-		 estatuto.executeUpdate("SELECT * FROM event  ;"); 
-		//JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE); 
-		 estatuto.close();  
-		 conex.closeConnection();   
-		 } catch (SQLException e) {         
-			 System.out.println(e.getMessage());  
-			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
-			 }  
-		
-		
-	}
-
-	
 }
