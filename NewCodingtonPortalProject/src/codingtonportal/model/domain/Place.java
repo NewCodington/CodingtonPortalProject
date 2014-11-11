@@ -11,6 +11,8 @@ public class Place {
 	private String region;
 	private Blob image;
 	private String address; 
+	private int typePlace; 
+	
 	
 	//Constructor
 	Place(){
@@ -20,7 +22,19 @@ public class Place {
 	    this.region=null;
 		this.image=null;
 		this.address=null;
+		this.typePlace=0;
 	}
+	
+	Place(int idPlace, String name, String description, String region, Blob image, String address){
+		this.idPlace=idPlace;
+		this.name=name;
+		this.description=description;
+	    this.region=region;
+		this.image=image;
+		this.address=address;
+		this.typePlace=typePlace;
+	}
+	
 	
 	
 
