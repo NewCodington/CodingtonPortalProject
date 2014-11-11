@@ -2,14 +2,17 @@
 
 package codingtonportal.model.dao;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import codingtonportal.model.domain.Event;
+import codingtonportal.utils.FERSDataConnection;
 
 public class EventDAO {
 	
-	 public void insertevent(Event event)   {  
-		 DbConnection conex= new DbConnection(); 
+	 public void insertevent(Event event) throws IOException, ClassNotFoundException   {  
+		 FERSDataConnection conex= new FERSDataConnection(); 
 		 try {    
 		Statement estatuto = conex.getConnection().createStatement();
 		 estatuto.executeUpdate("INSERT INTO event VALUES (" +
@@ -22,8 +25,8 @@ public class EventDAO {
 		 		"'"+event.getEventType()+"',"+
 		 		event.getSeatsAvailable()+")"); 
 		//JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE); 
-		 estatuto.close();  
-		 conex.desconectar();    
+		 estatuto.close();
+		 conex.close();		     
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
 			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
@@ -31,14 +34,14 @@ public class EventDAO {
 		 } 
 	
 	
-	 public void deleteevent(Event event)   {  
-		 DbConnection conex= new DbConnection(); 
+	 public void deleteevent(Event event) throws IOException, ClassNotFoundException   {  
+		 FERSDataConnection conex= new FERSDataConnection(); 
 		 try {    
 		Statement estatuto = conex.getConnection().createStatement();
 		 estatuto.executeUpdate("DELETE FROM event WHERE idevent="+event.getEventId()+";");		 
 		 //JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE); 
 		 estatuto.close();  
-		 conex.desconectar();    
+		 conex.close();    
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
 			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   

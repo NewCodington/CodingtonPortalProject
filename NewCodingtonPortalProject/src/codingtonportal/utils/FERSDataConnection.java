@@ -18,9 +18,10 @@ import java.sql.SQLException;
  * @author 
  */
 
-public class FERSDataConnection{
+public class FERSDataConnection {
      // las variables hay que cambiarlas
 //    private String url= "jdbc:oracle:thin:@localhost:1521:xe";
+	static Connection connection ;
 	private String driver;
 	private String url;
     private String user;
@@ -62,7 +63,6 @@ public class FERSDataConnection{
 	}
     
   public Connection getConnection() throws ClassNotFoundException, SQLException{
-      Connection connection = null;
       
           //Cargamos el driver que está en libraries mysql y establecemos la conexión.
     	  
@@ -79,5 +79,10 @@ public class FERSDataConnection{
           // JOptionPane sería cambiarlos en a interfaz.
       return connection;
   }
+  
+  public void close() throws SQLException
+	{	
+		connection.close();
+	}
     
 }
