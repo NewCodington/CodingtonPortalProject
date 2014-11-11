@@ -8,7 +8,6 @@ package codingtonportal.utils;
 
 
 import java.io.IOException;
-import codingotonportal.model.utils.classes.DatabaseProperty;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

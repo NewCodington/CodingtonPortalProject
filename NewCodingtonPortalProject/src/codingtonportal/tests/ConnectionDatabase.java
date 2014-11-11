@@ -2,12 +2,11 @@ package codingtonportal.tests;
 
 
 import java.sql.SQLException;
-
-import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import codingtonportal.model.utils.FERSDataConnection;
+import codingtonportal.utils.FERSDataConnection;
+import junit.framework.TestCase;
 
 
 
