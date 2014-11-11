@@ -26,7 +26,8 @@ public class EventDAO {
 			statementSQL.setString(7, event.getEventType());
 			statementSQL.setInt(8, event.getSeatsAvailable());
 			
-			statementSQL.executeQuery();
+			System.out.println(statementSQL.toString());
+			statementSQL.execute();
 			statementSQL.close();
 			conex.close();		     
 		 } catch (SQLException e) {         
