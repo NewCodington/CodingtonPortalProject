@@ -10,9 +10,10 @@ import junit.framework.TestCase;
 
 
 
-public class ConnectionDatabase extends TestCase {
+public class ConnectionDatabaseJUnit extends TestCase {
 
 	FERSDataConnection connection;
+	
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();

@@ -12,31 +12,32 @@ import codingtonportal.utils.FERSDataConnection;
 
 public class EventDAO {
 	
-	 public void insertevent(Event event) throws IOException, ClassNotFoundException   {  
+	 public boolean insertevent(Event event) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
 		 DatabaseProperty conexion= new DatabaseProperty();
 		 try {    
-		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("insertEvent"));
-		statementSQL.setInt(1, event.getEventId());
-		statementSQL.setString(2, event.getName());
-		statementSQL.setString(3, event.getDescription());
-		statementSQL.setInt(4, event.getPlace());
-		statementSQL.setString(5, event.getDuration());
-		statementSQL.setString(6, event.getStarttime());
-		statementSQL.setString(7, event.getEventType());
-		statementSQL.setInt(8, event.getSeatsAvailable());
-		
-		statementSQL.executeQuery();
-		statementSQL.close();
-		conex.close();		     
+			PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("insertEvent"));
+			statementSQL.setInt(1, event.getEventId());
+			statementSQL.setString(2, event.getName());
+			statementSQL.setString(3, event.getDescription());
+			statementSQL.setInt(4, event.getPlace());
+			statementSQL.setString(5, event.getDuration());
+			statementSQL.setString(6, event.getStarttime());
+			statementSQL.setString(7, event.getEventType());
+			statementSQL.setInt(8, event.getSeatsAvailable());
+			
+			statementSQL.executeQuery();
+			statementSQL.close();
+			conex.close();		     
 		 } catch (SQLException e) {         
-			 System.out.println(e.getMessage());  
+			 return false;
 			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
-			 }  
+			 }
+		return true;  
 		 } 
 	
 	
-	 public void deleteevent(Event event) throws IOException, ClassNotFoundException   {  
+	 public boolean deleteevent(Event event) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
 		 DatabaseProperty conexion= new DatabaseProperty(); 
 		 try {    
@@ -47,8 +48,12 @@ public class EventDAO {
 			 statementSQL.close();  
 			 conex.close();    
 		 } catch (SQLException e) {         
-			 System.out.println(e.getMessage());  
-		 }  
-	 } 
+			 return false; 
+		 }
+		return true;  
+	 }
+
+
+	 
 	
 }
