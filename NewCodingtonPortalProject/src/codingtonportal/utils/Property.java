@@ -1,4 +1,4 @@
-package codingtonportal.utils.classes;
+package codingtonportal.utils;
 
 import java.io.IOException;
 
