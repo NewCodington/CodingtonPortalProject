@@ -66,17 +66,10 @@ public class FERSDataConnection {
       
           //Cargamos el driver que está en libraries mysql y establecemos la conexión.
     	  
-          //Class.forName("oracle.jdbc.driver.OracleDriver");
-    	  //Class.forName("com.mysql.jdbc.Driver");
     	  
 			Class.forName(this.driver);
 			connection = DriverManager.getConnection(this.url, this.user, this.pass);
 
-          
-          //if (connection != null) JOptionPane.showMessageDialog(null, "Conexion exitosa");  
-          //else JOptionPane.showMessageDialog(null, "Conexion fallida\n");
-          
-          // JOptionPane sería cambiarlos en a interfaz.
       return connection;
   }
   

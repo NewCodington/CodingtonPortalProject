@@ -14,8 +14,8 @@ public class EventDAO {
 	 public void insertevent(Event event) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
 		 try {    
-		Statement estatuto = conex.getConnection().createStatement();
-		 estatuto.executeUpdate("INSERT INTO event VALUES (" +
+		Statement statementSQL = conex.getConnection().createStatement();
+		statementSQL.executeUpdate("INSERT INTO event VALUES (" +
 		 		+event.getEventId()+"," +
 		 		"'"+event.getName()+"'," +
 		 		"'"+event.getDescription()+"'," +
@@ -25,7 +25,7 @@ public class EventDAO {
 		 		"'"+event.getEventType()+"',"+
 		 		event.getSeatsAvailable()+")"); 
 		//JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE); 
-		 estatuto.close();
+		statementSQL.close();
 		 conex.close();		     
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
@@ -37,15 +37,14 @@ public class EventDAO {
 	 public void deleteevent(Event event) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
 		 try {    
-		Statement estatuto = conex.getConnection().createStatement();
-		 estatuto.executeUpdate("DELETE FROM event WHERE idevent="+event.getEventId()+";");		 
-		 //JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE); 
-		 estatuto.close();  
+		Statement statementSQL = conex.getConnection().createStatement();
+		statementSQL.executeUpdate("DELETE FROM event WHERE idevent="+event.getEventId()+";");		 
+		
+		statementSQL.close();  
 		 conex.close();    
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
-			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
-			 }  
-		 } 
+		 }  
+	 } 
 	
 }
