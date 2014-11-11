@@ -3,30 +3,32 @@
 package codingtonportal.model.dao;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import codingtonportal.model.domain.Event;
+import codingtonportal.utils.DatabaseProperty;
 import codingtonportal.utils.FERSDataConnection;
 
 public class EventDAO {
 	
 	 public void insertevent(Event event) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
+		 DatabaseProperty conexion= new DatabaseProperty();
 		 try {    
-		Statement statementSQL = conex.getConnection().createStatement();
-		statementSQL.executeUpdate("INSERT INTO event VALUES (" +
-		 		+event.getEventId()+"," +
-		 		"'"+event.getName()+"'," +
-		 		"'"+event.getDescription()+"'," +
-		 		"'"+event.getPlace()+"'," +
-		 		"'"+event.getDuration()+"',"+
-		 		"'"+event.getStarttime()+"',"+
-		 		"'"+event.getEventType()+"',"+
-		 		event.getSeatsAvailable()+")"); 
-		//JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE); 
+		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("insertEvent"));
+		statementSQL.setInt(1, event.getEventId());
+		statementSQL.setString(2, event.getName());
+		statementSQL.setString(3, event.getDescription());
+		statementSQL.setInt(4, event.getPlace());
+		statementSQL.setString(5, event.getDuration());
+		statementSQL.setString(6, event.getStarttime());
+		statementSQL.setString(7, event.getEventType());
+		statementSQL.setInt(8, event.getSeatsAvailable());
+		
+		statementSQL.executeQuery();
 		statementSQL.close();
-		 conex.close();		     
+		conex.close();		     
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
 			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
@@ -36,12 +38,14 @@ public class EventDAO {
 	
 	 public void deleteevent(Event event) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
+		 DatabaseProperty conexion= new DatabaseProperty(); 
 		 try {    
-		Statement statementSQL = conex.getConnection().createStatement();
-		statementSQL.executeUpdate("DELETE FROM event WHERE idevent="+event.getEventId()+";");		 
+			 PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("insertEvent"));
+			 statementSQL.setInt(1, event.getEventId());
+			 statementSQL.executeQuery();		 
 		
-		statementSQL.close();  
-		 conex.close();    
+			 statementSQL.close();  
+			 conex.close();    
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
 		 }  

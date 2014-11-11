@@ -6,7 +6,7 @@ public class Event {
 	private int eventId;
 	private String name;
 	private String description;
-	private String place;
+	private int place;
 	private String duration;
 	private String eventType;
 	private int seatsAvailable;
@@ -19,7 +19,7 @@ public class Event {
 		this.eventId=0;
 		this.name=null;
 		this.description=null;
-		this.place=null;
+		this.place=0;
 		this.duration=null;
 		this.eventType=null;
 		this.seatsAvailable=0;
@@ -66,11 +66,11 @@ public class Event {
 		this.description = description;
 	}
 
-	public String getPlace() {
+	public int getPlace() {
 		return place;
 	}
 
-	public void setPlace(String place) {
+	public void setPlace(int place) {
 		this.place = place;
 	}
 
