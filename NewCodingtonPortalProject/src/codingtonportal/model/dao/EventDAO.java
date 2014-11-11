@@ -12,7 +12,7 @@ import codingtonportal.utils.FERSDataConnection;
 
 public class EventDAO {
 	
-	 public boolean insertevent(Event event) throws IOException, ClassNotFoundException   {  
+	 public boolean insertEvent(Event event) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
 		 DatabaseProperty conexion= new DatabaseProperty();
 		 try {    
@@ -22,7 +22,7 @@ public class EventDAO {
 			statementSQL.setString(3, event.getDescription());
 			statementSQL.setInt(4, event.getPlace());
 			statementSQL.setString(5, event.getDuration());
-			statementSQL.setString(6, event.getStarttime());
+			statementSQL.setString(6, event.getStartTime());
 			statementSQL.setString(7, event.getEventType());
 			statementSQL.setInt(8, event.getSeatsAvailable());
 			
@@ -37,12 +37,12 @@ public class EventDAO {
 		 } 
 	
 	
-	 public boolean deleteevent(Event event) throws IOException, ClassNotFoundException   {  
+	 public boolean deleteEvent(int eventId) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
 		 DatabaseProperty conexion= new DatabaseProperty(); 
 		 try {    
 			 PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("insertEvent"));
-			 statementSQL.setInt(1, event.getEventId());
+			 statementSQL.setInt(1, eventId);
 			 statementSQL.executeQuery();		 
 		
 			 statementSQL.close();  

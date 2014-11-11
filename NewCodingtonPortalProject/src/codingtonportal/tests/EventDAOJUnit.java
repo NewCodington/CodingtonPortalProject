@@ -1,6 +1,7 @@
 package codingtonportal.tests;
 
-import java.awt.Event;
+
+import java.io.IOException;
 
 import junit.framework.TestCase;
 import org.junit.After;
@@ -8,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import codingtonportal.model.dao.EventDAO;
+import codingtonportal.model.domain.Event;
 
 public class EventDAOJUnit extends TestCase{
 	EventDAO event;
@@ -26,12 +28,28 @@ public class EventDAOJUnit extends TestCase{
 	@Test
 	public void testInsertevent() {
 	    Event events= new Event(001, "Charla", "Explicacion de marmotas", 1, "2 horas", "17 horas", "divulgativo",12);
-		AssertTrue(event.insertevent(events));
+		try {
+			assertTrue(event.insertEvent(events));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	public void testDeleteevent() {
-		fail("Not yet implemented");
+		try {
+			assertTrue(event.deleteEvent(001));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
