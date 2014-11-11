@@ -12,12 +12,12 @@ import codingtonportal.model.dao.EventDAO;
 import codingtonportal.model.domain.Event;
 
 public class EventDAOJUnit extends TestCase{
-	EventDAO event;
+	EventDAO eventt;
 	
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-		event = new EventDAO();
+		eventt = new EventDAO();
 	}
 
 	@After
@@ -29,7 +29,7 @@ public class EventDAOJUnit extends TestCase{
 	public void testInsertevent() {
 	    Event events= new Event(001, "Charla", "Explicacion de marmotas", 1, "2 horas", "17 horas", "divulgativo",12);
 		try {
-			assertTrue(event.insertEvent(events));
+			assertTrue(eventt.insertEvent(events));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,7 +42,7 @@ public class EventDAOJUnit extends TestCase{
 	@Test
 	public void testDeleteevent() {
 		try {
-			assertTrue(event.deleteEvent(001));
+			assertTrue(eventt.deleteEvent(001));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
