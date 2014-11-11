@@ -1,75 +1,85 @@
 package codingtonportal.model.dao;
 
+import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
-
-import codingtonportal.model.domain.Event;
 import codingtonportal.model.domain.Place;
-import codingtonportal.model.inter.dao.IPlace;
+import codingtonportal.model.interfaces.dao.IPlace;
+import codingtonportal.utils.DatabaseProperty;
+import codingtonportal.utils.FERSDataConnection;
 
 public class PlaceDAO implements IPlace {
 	
-	public void insertplace(Place place)    {  
-		ConnectionDB conex= new ConnectionDB();  
+	public void insertplace(Place place) throws IOException, ClassNotFoundException   {  
+		 FERSDataConnection conex= new FERSDataConnection(); 
+		 DatabaseProperty conexion= new DatabaseProperty();
+		 
 		 try {    
-		Statement estatuto = conex.getConnection().createStatement();
-		 estatuto.executeUpdate("INSERT INTO place VALUES (" +
-		 		+place.getIdPlace()+"," +
-		 		"'"+place.getName()+"'," +
-		 		"'"+place.getRegion()+"'," +
-		 		"'"+place.getImage()+"'," +
-		 		"'"+place.getAddress()+"',"+
-		 		"'"+place.getDescription()+"',)"); 
-		//JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE); 
-		 estatuto.close();  
-		 conex.closeConnection();   
+		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("insertplace"));
+		statementSQL.setInt(1, place.getIdPlace());
+		statementSQL.setString(2, place.getName());
+		statementSQL.setString(3, place.getRegion());
+		statementSQL.setBlob(4, place.getImage());
+		statementSQL.setString(5, place.getAddress());
+		statementSQL.setString(6, place.getDescription());
+		
+		
+		statementSQL.executeQuery();
+		statementSQL.close();
+		conex.close();		     
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
-			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
+			 
 			 }  
 		 } 
 	
 	
-	 public void deleteplace(Place place)   {  
-		 ConnectionDB conex= new ConnectionDB();  
+	 public void deleteplace(Place place)   throws IOException, ClassNotFoundException   {  
+		 FERSDataConnection conex= new FERSDataConnection(); 
+		 DatabaseProperty conexion= new DatabaseProperty();
+		 
 		 try {    
-		Statement estatuto = conex.getConnection().createStatement();
-		 estatuto.executeUpdate("DELETE FROM place WHERE idplace="+place.getIdPlace()+";");		 
-		 //JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE); 
-		 estatuto.close();  
-		 conex.closeConnection();     
-		 } catch (SQLException e) {         
-			 System.out.println(e.getMessage());  
-			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
-			 }  
-		 } 
+		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("deleteplace"));
+		statementSQL.setInt(1, place.getIdPlace());
+	
+		 statementSQL.executeQuery();		 
+			
+		 statementSQL.close();  
+		 conex.close();    
+	 } catch (SQLException e) {         
+		 System.out.println(e.getMessage());  
+	 }  
+ } 
+
+		 
 	 
-	 public void updateplace(Place place) {
-			
-			ConnectionDB conex= new ConnectionDB(); 
-			 try {    
-			Statement estatuto = conex.getConnection().createStatement();
-			 estatuto.executeUpdate("UPDATE FROM place SET (" 
-			 		+"Name="+place.getName()+"'," 
-			 		+"Region="+place.getRegion()+"', " 
-			 		+"Image="+place.getImage()+"'," 
-			 		+"Address="+place.getAddress()+"'," 
-			 		+"Description="+place.getDescription()+") WHERE IdPlace="+place.getIdPlace()+";");	
-			 		
-			 //JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE); 
-			 estatuto.close();  
-			 conex.closeConnection();    
-			 } catch (SQLException e) {         
-				 System.out.println(e.getMessage());  
-				 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
-				 }  	
-			
-			
+	 public void updateplace(Place place) throws IOException, ClassNotFoundException   {  
+		 FERSDataConnection conex= new FERSDataConnection(); 
+		 DatabaseProperty conexion= new DatabaseProperty();
+		 
+		 try {    
+				PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("updateplace"));
+				statementSQL.setString(1, place.getName());
+				statementSQL.setString(2, place.getRegion());
+				statementSQL.setBlob(3, place.getImage());
+				statementSQL.setString(4, place.getAddress());
+				statementSQL.setString(5, place.getDescription());
+				statementSQL.setInt(6, place.getIdPlace());
+				
+				
+				statementSQL.executeQuery();
+				statementSQL.close();
+				conex.close();		     
+				 } catch (SQLException e) {         
+					 System.out.println(e.getMessage());  
+					
+					 }  
+				 } 
+		 
+		 	
 			
 		}
 
 
 
-	 
-
-}
+	
