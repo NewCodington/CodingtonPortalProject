@@ -26,8 +26,8 @@ public class EventDAO {
 			statementSQL.setString(7, event.getEventType());
 			statementSQL.setInt(8, event.getSeatsAvailable());
 			
-			System.out.println(statementSQL.toString());
-			statementSQL.execute();
+			int rows = statementSQL.executeUpdate();
+			System.out.println(rows);
 			statementSQL.close();
 			conex.close();		     
 		 } catch (SQLException e) {         
@@ -42,9 +42,10 @@ public class EventDAO {
 		 FERSDataConnection conex= new FERSDataConnection(); 
 		 DatabaseProperty conexion= new DatabaseProperty(); 
 		 try {    
-			 PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("insertEvent"));
-			 statementSQL.setInt(1, eventId);
-			 statementSQL.executeQuery();		 
+			PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("insertEvent"));
+			statementSQL.setInt(1, eventId);
+			int rows = statementSQL.executeUpdate();
+			System.out.println(rows); 
 		
 			 statementSQL.close();  
 			 conex.close();    
