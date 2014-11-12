@@ -2,22 +2,20 @@ package codingtonportal.tests;
 
 
 import java.io.IOException;
-
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import codingtonportal.model.dao.EventDAO;
-import codingtonportal.model.domain.Event;
+import codingtonportal.model.services.EventServiceImpl;
 
 public class EventDAOJUnit extends TestCase{
-	EventDAO eventt;
+	EventServiceImpl eventt;
 	
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-		eventt = new EventDAO();
+		eventt = new EventServiceImpl();
 	}
 
 	@After
@@ -27,7 +25,7 @@ public class EventDAOJUnit extends TestCase{
 
 	@Test
 	public void testInsertevent() {
-	    Event events= new Event(001, "Charla", "Explicacion de marmotas", 1, "2 horas", "17 horas", "divulgativo",12);
+	    EventDAO events= new EventDAO(001, "Charla", "Explicacion de marmotas", 1, "2 horas", "17 horas", "divulgativo",12);
 		try {
 			assertTrue(eventt.insertEvent(events));
 		} catch (IOException e) {

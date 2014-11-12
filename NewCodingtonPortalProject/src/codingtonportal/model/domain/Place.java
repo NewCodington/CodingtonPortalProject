@@ -15,7 +15,7 @@ public class Place {
 	
 	
 	//Constructor
-	Place(){
+	protected Place(){
 		this.idPlace=0;
 		this.name=null;
 		this.description=null;
@@ -25,7 +25,7 @@ public class Place {
 		this.typePlace=0;
 	}
 	
-	Place(int idPlace, String name, String description, String region, Blob image, String address){
+	protected Place(int idPlace, String name, String description, String region, Blob image, String address){
 		this.idPlace=idPlace;
 		this.name=name;
 		this.description=description;

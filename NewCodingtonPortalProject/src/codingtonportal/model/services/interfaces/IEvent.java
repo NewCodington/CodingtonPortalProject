@@ -1,4 +1,4 @@
-package codingtonportal.model.interfaces.dao;
+package codingtonportal.model.services.interfaces;
 
 import codingtonportal.model.domain.Event;
 

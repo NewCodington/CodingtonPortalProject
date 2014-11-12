@@ -10,7 +10,7 @@ public class Visitor extends User {
 	
 	
 	//Constructor
-	Visitor()
+	protected Visitor()
 	{
 		this.visitorId=0;
 		this.userName=null;
@@ -20,7 +20,7 @@ public class Visitor extends User {
 	}
 	
 	//Constructor con parametros
-	Visitor(Visitor visitor)
+	protected Visitor(Visitor visitor)
 	{
 		this.visitorId=visitor.getVisitorId();
 		this.userName=visitor.getUserName();

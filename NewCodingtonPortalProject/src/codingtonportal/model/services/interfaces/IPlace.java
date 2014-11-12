@@ -1,4 +1,4 @@
-package codingtonportal.model.interfaces.dao;
+package codingtonportal.model.services.interfaces;
 
 
 import java.io.IOException;
