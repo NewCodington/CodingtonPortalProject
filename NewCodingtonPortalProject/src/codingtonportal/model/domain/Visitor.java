@@ -1,41 +1,60 @@
 package codingtonportal.model.domain;
 
-public class Visitor extends User {
+public class Visitor {
 	
 	//Atributos
-	private int visitorId;
+
+	private int idVisitor;
+	private String firstName;
+	private String lastName;
+	private String dni;
+	private String email;
+	private String phoneNumber;
+	private String address;
 	private String userName;
 	private String password;
-	private String confirmPassword;
+	private boolean admin;
 	
 	
 	//Constructor
 	protected Visitor()
 	{
-		this.visitorId=0;
+		this.idVisitor=0;
+		this.firstName=null;
+		this.lastName=null;
+		this.dni=null;
+		this.email=null;
+		this.phoneNumber=null;
+		this.address=null;
 		this.userName=null;
 		this.password=null;
-		this.confirmPassword=null;
+		this.admin=true;
 		
 	}
 	
 	//Constructor con parametros
-	protected Visitor(int visitorId, String userName, String password, String confirmPassword)
+	protected Visitor(int idVisitor, String userName, String password, String confirmPassword, String firstName,
+			String lastName, String dni, String email,String phoneNumber, String address, boolean admin)
 	{
-		this.visitorId=visitorId;
+		
+		this.idVisitor=idVisitor;
+		this.firstName=firstName;
+		this.lastName=lastName;
+		this.dni=dni;
+		this.email=email;
+		this.phoneNumber=phoneNumber;
+		this.address=address;
 		this.userName=userName;
 		this.password=password;
-		this.confirmPassword = confirmPassword;
+		this.admin=admin;
 				
 	}
 	
 	//Constructor con parametros
-	protected Visitor(Visitor visitor)
+	protected Visitor(String userName, String password)
 	{
-		this.visitorId=visitor.getVisitorId();
-		this.userName=visitor.getUserName();
-		this.password=visitor.getPassword();
-		this.confirmPassword=visitor.getConfirmPassword();
+		this.userName=userName;
+		this.password=password;
 				
 	}
 
@@ -44,11 +63,11 @@ public class Visitor extends User {
 	
 	//GETTERS AND SETTERS
 	public int getVisitorId() {
-		return visitorId;
+		return idVisitor;
 	}
 
 	public void setVisitorId(int visitorId) {
-		this.visitorId = visitorId;
+		this.idVisitor = visitorId;
 	}
 
 	public String getUserName() {
@@ -67,14 +86,70 @@ public class Visitor extends User {
 		this.password = password;
 	}
 
-	
-
-	public String getConfirmPassword() {
-		return confirmPassword;
+	public int getIdVisitor() {
+		return idVisitor;
 	}
 
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
+	public void setIdVisitor(int idVisitor) {
+		this.idVisitor = idVisitor;
 	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+
+
 
 }
