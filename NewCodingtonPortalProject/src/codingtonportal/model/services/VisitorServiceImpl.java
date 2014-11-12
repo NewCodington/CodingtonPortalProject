@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import codingtonportal.model.dao.interfaces.VisitorDAO;
 import codingtonportal.model.domain.Visitor;
-import codingtonportal.model.services.interfaces.VisitorDAO;
 import codingtonportal.utils.DatabaseProperty;
 import codingtonportal.utils.FERSDataConnection;
 

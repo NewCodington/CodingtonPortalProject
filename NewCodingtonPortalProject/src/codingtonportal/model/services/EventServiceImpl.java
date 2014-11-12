@@ -5,8 +5,9 @@ package codingtonportal.model.services;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import codingtonportal.model.dao.interfaces.EventDAO;
 import codingtonportal.model.domain.Event;
-import codingtonportal.model.services.interfaces.EventDAO;
 import codingtonportal.utils.DatabaseProperty;
 import codingtonportal.utils.FERSDataConnection;
 

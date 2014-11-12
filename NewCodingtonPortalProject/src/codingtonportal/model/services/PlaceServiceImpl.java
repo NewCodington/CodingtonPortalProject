@@ -3,8 +3,9 @@ package codingtonportal.model.services;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import codingtonportal.model.dao.interfaces.PlaceDAO;
 import codingtonportal.model.domain.Place;
-import codingtonportal.model.services.interfaces.PlaceDAO;
 import codingtonportal.utils.DatabaseProperty;
 import codingtonportal.utils.FERSDataConnection;
 
