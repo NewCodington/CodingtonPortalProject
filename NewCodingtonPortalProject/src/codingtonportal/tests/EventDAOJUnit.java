@@ -6,7 +6,8 @@ import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import codingtonportal.model.dao.EventDAO;
+
+import codingtonportal.model.domain.Event;
 import codingtonportal.model.services.EventServiceImpl;
 
 public class EventDAOJUnit extends TestCase{
@@ -25,7 +26,7 @@ public class EventDAOJUnit extends TestCase{
 
 	@Test
 	public void testInsertevent() {
-	    EventDAO events= new EventDAO(001, "Charla", "Explicacion de marmotas", 1, "2 horas", "17 horas", "divulgativo",12);
+	    Event events= new Event(001, "Charla", "Explicacion de marmotas", 1, "2 horas", "17 horas", "divulgativo",12);
 		try {
 			assertTrue(event.insertEvent(events));
 		} catch (IOException e) {
@@ -39,8 +40,9 @@ public class EventDAOJUnit extends TestCase{
 
 	@Test
 	public void testDeleteevent() {
+		Event events= new Event(001, "Charla", "Explicacion de marmotas", 1, "2 horas", "17 horas", "divulgativo",12);
 		try {
-			assertTrue(event.deleteEvent(001));
+			assertTrue(event.deleteEvent(events));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

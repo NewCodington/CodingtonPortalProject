@@ -28,7 +28,7 @@ public class Event {
 	}
 
 	//Constructor con parametros
-	protected Event(int eventId, String name, String description, int place,
+	public Event(int eventId, String name, String description, int place,
 			String duration, String startTime, String eventType, int seatsAvailable)
 	{
 		this.eventId=eventId;
