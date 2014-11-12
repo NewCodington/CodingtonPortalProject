@@ -5,15 +5,15 @@ import java.io.IOException;
 import codingtonportal.model.domain.Visitor;
 
 public interface IVisitor {
-	public void insertvisitor(Visitor visitor) throws IOException, ClassNotFoundException;
-	public void loginvisitor(String Username, String Password) throws ClassNotFoundException, IOException;
-	public void deletevisitor(Visitor visitor) throws IOException, ClassNotFoundException;
-	public void updateinformation(Visitor visitor) throws ClassNotFoundException, IOException;
-	public void updatepassword(Visitor visitor) throws IOException, ClassNotFoundException;
-	public void registerevent(int IdUser, int IdEvent) throws ClassNotFoundException, IOException;
-	public void unregisterevent(int IdUser, int IdEvent) throws IOException, ClassNotFoundException;
-	public void searchevent(String Search) throws IOException, ClassNotFoundException;
-	public void viewevent() throws ClassNotFoundException, IOException;
+	public void insertVisitor(Visitor visitor) throws IOException, ClassNotFoundException;
+	public void loginVisitor(String Username, String Password) throws ClassNotFoundException, IOException;
+	public void deleteVisitor(Visitor visitor) throws IOException, ClassNotFoundException;
+	public void updateInformation(Visitor visitor) throws ClassNotFoundException, IOException;
+	public void updatePassword(Visitor visitor) throws IOException, ClassNotFoundException;
+	public void registerForNewEvent(int IdUser, int IdEvent) throws ClassNotFoundException, IOException;
+	public void unregisterForEvent(int IdUser, int IdEvent) throws IOException, ClassNotFoundException;
+	public void searchEvent(String Search) throws IOException, ClassNotFoundException;
+	public void viewEvent() throws ClassNotFoundException, IOException;
 	
 	
 	}

@@ -6,13 +6,14 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import codingtonportal.model.dao.EventDAO;
 import codingtonportal.model.domain.Event;
 import codingtonportal.utils.DatabaseProperty;
 import codingtonportal.utils.FERSDataConnection;
 
 public class EventServiceImpl {
 	
-	 public boolean insertEvent(Event event) throws IOException, ClassNotFoundException   {  
+	 public boolean insertEvent(EventDAO event) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
 		 DatabaseProperty conexion= new DatabaseProperty();
 		 try {    
