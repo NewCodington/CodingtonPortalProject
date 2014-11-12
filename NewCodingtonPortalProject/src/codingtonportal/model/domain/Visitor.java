@@ -20,6 +20,16 @@ public class Visitor extends User {
 	}
 	
 	//Constructor con parametros
+	protected Visitor(int visitorId, String userName, String password, String confirmPassword)
+	{
+		this.visitorId=visitorId;
+		this.userName=userName;
+		this.password=password;
+		this.confirmPassword = confirmPassword;
+				
+	}
+	
+	//Constructor con parametros
 	protected Visitor(Visitor visitor)
 	{
 		this.visitorId=visitor.getVisitorId();
