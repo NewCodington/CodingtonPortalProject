@@ -26,8 +26,7 @@ public class EventServiceImpl {
 			statementSQL.setString(7, event.getEventType());
 			statementSQL.setInt(8, event.getSeatsAvailable());
 			
-			int rows = statementSQL.executeUpdate();
-			System.out.println(rows);
+			statementSQL.executeUpdate();
 			statementSQL.close();
 			conex.close();		     
 		 } catch (SQLException e) {         
@@ -44,11 +43,10 @@ public class EventServiceImpl {
 		 try {    
 			PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("deleteEvent"));
 			statementSQL.setInt(1, eventId);
-			int rows = statementSQL.executeUpdate();
-			System.out.println(rows); 
+			statementSQL.executeUpdate();
 		
-			 statementSQL.close();  
-			 conex.close();    
+			statementSQL.close();  
+			conex.close();    
 		 } catch (SQLException e) {         
 			 return false; 
 		 }
