@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import codingtonportal.model.domain.Place;
-import codingtonportal.model.services.interfaces.IPlace;
+import codingtonportal.model.services.interfaces.PlaceDAO;
 import codingtonportal.utils.DatabaseProperty;
 import codingtonportal.utils.FERSDataConnection;
 
-public class PlaceServiceImpl implements IPlace {
+public class PlaceServiceImpl implements PlaceDAO {
 	
 	public boolean insertPlace(Place place) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
@@ -30,7 +30,8 @@ public class PlaceServiceImpl implements IPlace {
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
 			 
-			 }  
+			 }
+		return false;  
 		 } 
 	
 	
@@ -48,7 +49,8 @@ public class PlaceServiceImpl implements IPlace {
 		 conex.close();    
 	 } catch (SQLException e) {         
 		 System.out.println(e.getMessage());  
-	 }  
+	 }
+		return false;  
  } 
 
 		 
@@ -71,6 +73,7 @@ public class PlaceServiceImpl implements IPlace {
 				conex.close();		     
 		} catch (SQLException e) {         
 					 System.out.println(e.getMessage());  
-		}  
+		}
+		return false;  
 	} 
 }

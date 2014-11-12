@@ -5,15 +5,14 @@ package codingtonportal.model.services;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
-import codingtonportal.model.dao.EventDAO;
 import codingtonportal.model.domain.Event;
+import codingtonportal.model.services.interfaces.EventDAO;
 import codingtonportal.utils.DatabaseProperty;
 import codingtonportal.utils.FERSDataConnection;
 
-public class EventServiceImpl {
+public class EventServiceImpl implements EventDAO{
 	
-	 public boolean insertEvent(EventDAO event) throws IOException, ClassNotFoundException   {  
+	 public boolean insertEvent(Event event) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
 		 DatabaseProperty conexion= new DatabaseProperty();
 		 try {    
@@ -38,12 +37,12 @@ public class EventServiceImpl {
 		 } 
 	
 	
-	 public boolean deleteEvent(int eventId) throws IOException, ClassNotFoundException   {  
+	 public boolean deleteEvent(Event event) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
 		 DatabaseProperty conexion= new DatabaseProperty(); 
 		 try {    
 			PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("deleteEvent"));
-			statementSQL.setInt(1, eventId);
+			statementSQL.setInt(1, event.getEventId());
 			statementSQL.executeUpdate();
 		
 			statementSQL.close();  
@@ -55,6 +54,10 @@ public class EventServiceImpl {
 	 }
 
 
-	 
-	
+	@Override
+	public boolean updateEvent(Event event) {
+		return false;
+		// TODO Auto-generated method stub
+		
+	}
 }
