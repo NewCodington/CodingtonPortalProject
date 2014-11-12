@@ -25,7 +25,7 @@ public class Place {
 		this.typePlace=0;
 	}
 	
-	protected Place(int idPlace, String name, String description, String region, Blob image, String address){
+	public Place(int idPlace, String name, String region, int typePlace, Blob image, String address, String description){
 		this.idPlace=idPlace;
 		this.name=name;
 		this.description=description;
@@ -88,5 +88,19 @@ public class Place {
 
 	public void setImage(Blob image) {
 		this.image = image;
+	}
+
+	/**
+	 * @return the typePlace
+	 */
+	public int getTypePlace() {
+		return typePlace;
+	}
+
+	/**
+	 * @param typePlace the typePlace to set
+	 */
+	public void setTypePlace(int typePlace) {
+		this.typePlace = typePlace;
 	}
 }

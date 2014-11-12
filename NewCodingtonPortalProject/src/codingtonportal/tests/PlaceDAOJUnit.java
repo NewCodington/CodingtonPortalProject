@@ -33,8 +33,16 @@ public class PlaceDAOJUnit extends TestCase {
 
 	@Test
 	public void testinsertplace() {
-		Place places= new Place (001,"Museum", "Science museum", "North", "hoaljfaofj", "c/Alcala,18 ");
-		fail("Not yet implemented");
+		Place places = new Place (1, "Museum", "North", 1, null, "C/olvido", "Quiero aparecer");
+		try {
+			assertTrue(place.insertPlace(places));		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		 
 	}
 
