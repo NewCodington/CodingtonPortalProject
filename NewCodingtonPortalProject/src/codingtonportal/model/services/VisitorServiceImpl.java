@@ -1,10 +1,8 @@
 package codingtonportal.model.services;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import codingtonportal.model.domain.Visitor;
 import codingtonportal.model.services.interfaces.IVisitor;
@@ -233,5 +231,76 @@ public class VisitorServiceImpl implements IVisitor {
 			 System.out.println(e.getMessage());  
 			 
 			 } 	
+	}
+
+
+	@Override
+	public void insertVisitor(Visitor visitor) throws IOException,
+			ClassNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void loginVisitor(String Username, String Password)
+			throws ClassNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void deleteVisitor(Visitor visitor) throws IOException,
+			ClassNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void updateInformation(Visitor visitor)
+			throws ClassNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void updatePassword(Visitor visitor) throws IOException,
+			ClassNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void registerForNewEvent(int IdUser, int IdEvent)
+			throws ClassNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void unregisterForEvent(int IdUser, int IdEvent) throws IOException,
+			ClassNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void searchEvent(String Search) throws IOException,
+			ClassNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void viewEvent() throws ClassNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		
 	}
 }

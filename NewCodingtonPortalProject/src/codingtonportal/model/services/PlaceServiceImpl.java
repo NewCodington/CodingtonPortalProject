@@ -10,7 +10,7 @@ import codingtonportal.utils.FERSDataConnection;
 
 public class PlaceServiceImpl implements IPlace {
 	
-	public void insertplace(Place place) throws IOException, ClassNotFoundException   {  
+	public void insertPlace(Place place) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
 		 DatabaseProperty conexion= new DatabaseProperty();
 		 
@@ -34,7 +34,7 @@ public class PlaceServiceImpl implements IPlace {
 		 } 
 	
 	
-	 public void deleteplace(Place place)   throws IOException, ClassNotFoundException   {  
+	 public void deletePlace(Place place)   throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
 		 DatabaseProperty conexion= new DatabaseProperty();
 		 
@@ -53,7 +53,7 @@ public class PlaceServiceImpl implements IPlace {
 
 		 
 	 
-	 public void updateplace(Place place) throws IOException, ClassNotFoundException   {  
+	 public void updatePlace(Place place) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
 		 DatabaseProperty conexion= new DatabaseProperty();
 		 
@@ -70,16 +70,8 @@ public class PlaceServiceImpl implements IPlace {
 				statementSQL.executeQuery();
 				statementSQL.close();
 				conex.close();		     
-				 } catch (SQLException e) {         
+		} catch (SQLException e) {         
 					 System.out.println(e.getMessage());  
-					
-					 }  
-				 } 
-		 
-		 	
-			
-		}
-
-
-
-	
+		}  
+	} 
+}
