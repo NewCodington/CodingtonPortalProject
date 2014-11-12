@@ -8,5 +8,9 @@ public class VisitorDAO extends Visitor {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	VisitorDAO(int visitorId, String userName, String password, String confirmPassword) {
+		super(visitorId, userName, password, confirmPassword);
+	}
 
 }
