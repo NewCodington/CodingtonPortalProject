@@ -25,7 +25,7 @@ public class VisitorDAOJUnit extends TestCase {
 
 	@Test
 	public void testinsertVisitor() {
-		Visitor visit= new Visitor(1, "Charla", "dafkj","Explicacion",
+		Visitor visit= new Visitor(1, "Charla2", "dafkj","Explicacion",
 				"jim", "45.2", "emai", "9874","12",true);
 		try {
 			assertTrue(visitor.insertVisitor(visit));

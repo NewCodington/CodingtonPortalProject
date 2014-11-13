@@ -38,7 +38,7 @@ public class VisitorServiceImpl implements VisitorDAO {
 		
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
-			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
+			 
 		 return false;	
 		 }
 			return true;  
