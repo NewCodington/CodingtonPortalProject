@@ -14,10 +14,11 @@ public class Visitor {
 	private String userName;
 	private String password;
 	private boolean admin;
+	private int idEvent;
 	
 	
 	//Constructor
-	protected Visitor()
+	public Visitor()
 	{
 		this.idVisitor=0;
 		this.firstName=null;
@@ -29,11 +30,12 @@ public class Visitor {
 		this.userName=null;
 		this.password=null;
 		this.admin=true;
+		this.idEvent=0;
 		
 	}
 	
 	//Constructor con parametros
-	protected Visitor(int idVisitor, String userName, String password, String confirmPassword, String firstName,
+	public Visitor(int idVisitor, String userName, String password, String firstName,
 			String lastName, String dni, String email,String phoneNumber, String address, boolean admin)
 	{
 		
@@ -51,13 +53,24 @@ public class Visitor {
 	}
 	
 	//Constructor con parametros
-	protected Visitor(String userName, String password)
+	public Visitor(String userName, String password)
 	{
 		this.userName=userName;
 		this.password=password;
 				
 	}
+	
+	
+	
 
+	//Constructor con parametros
+	public Visitor(int idVisitor, int idEvent)
+	{
+		this.idVisitor=idVisitor;
+		this.idEvent=idEvent;
+				
+	}
+	
 	
 	
 	
@@ -76,6 +89,14 @@ public class Visitor {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public int getIdEvent() {
+		return idEvent;
+	}
+
+	public void setIdEvent(int idEvent) {
+		this.idEvent = idEvent;
 	}
 
 	public String getPassword() {
