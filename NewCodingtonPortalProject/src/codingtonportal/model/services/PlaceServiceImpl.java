@@ -6,14 +6,14 @@ import java.sql.SQLException;
 
 import codingtonportal.model.dao.interfaces.PlaceDAO;
 import codingtonportal.model.domain.Place;
-import codingtonportal.utils.DatabaseProperty;
+import codingtonportal.utils.PropertyAccess;
 import codingtonportal.utils.FERSDataConnection;
 
 public class PlaceServiceImpl implements PlaceDAO {
 	
 	public boolean insertPlace(Place place) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
-		 DatabaseProperty conexion= new DatabaseProperty();
+		 PropertyAccess conexion= new PropertyAccess();
 		 
 		 try {    
 		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("insertplace"));
@@ -38,7 +38,7 @@ public class PlaceServiceImpl implements PlaceDAO {
 	
 	 public boolean deletePlace(Place place)   throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
-		 DatabaseProperty conexion= new DatabaseProperty();
+		 PropertyAccess conexion= new PropertyAccess();
 		 
 		 try {    
 		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("deleteplace"));
@@ -58,7 +58,7 @@ public class PlaceServiceImpl implements PlaceDAO {
 	 
 	 public boolean updatePlace(Place place) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
-		 DatabaseProperty conexion= new DatabaseProperty();
+		 PropertyAccess conexion= new PropertyAccess();
 		 
 		 try {    
 				PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("updateplace"));

@@ -6,14 +6,15 @@ import java.sql.SQLException;
 
 import codingtonportal.model.dao.interfaces.EventDAO;
 import codingtonportal.model.domain.Event;
-import codingtonportal.utils.DatabaseProperty;
+
 import codingtonportal.utils.FERSDataConnection;
+import codingtonportal.utils.PropertyAccess;
 
 public class EventServiceImpl implements EventDAO {
 	
 	 public boolean insertEvent(Event event) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
-		 DatabaseProperty conexion= new DatabaseProperty();
+		 PropertyAccess conexion= new PropertyAccess();
 		 try {    
 			PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("insertEvent"));
 			statementSQL.setInt(1, event.getEventId());
@@ -38,7 +39,7 @@ public class EventServiceImpl implements EventDAO {
 	
 	 public boolean deleteEvent(Event event) throws IOException, ClassNotFoundException   {  
 		 FERSDataConnection conex= new FERSDataConnection(); 
-		 DatabaseProperty conexion= new DatabaseProperty(); 
+		 PropertyAccess conexion= new PropertyAccess(); 
 		 try {    
 			 PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("deleteEvent"));
 			 statementSQL.setInt(1, event.getEventId());
@@ -58,7 +59,7 @@ public class EventServiceImpl implements EventDAO {
 	@Override
 	public boolean updateEvent(Event event) throws IOException, ClassNotFoundException {
 		FERSDataConnection conex= new FERSDataConnection(); 
-		 DatabaseProperty conexion= new DatabaseProperty();
+		 PropertyAccess conexion= new PropertyAccess();
 		 try {    
 			PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("updateEvent"));
 			statementSQL.setString(1, event.getName());
@@ -84,7 +85,7 @@ public class EventServiceImpl implements EventDAO {
 	@Override
 	public boolean updateSeatsAvailable(Event event) throws ClassNotFoundException, IOException {
 		FERSDataConnection conex= new FERSDataConnection(); 
-		 DatabaseProperty conexion= new DatabaseProperty();
+		 PropertyAccess conexion= new PropertyAccess();
 		 try {    
 			PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("updateSeats"));
 			statementSQL.setInt(1, event.getSeatsAvailable());

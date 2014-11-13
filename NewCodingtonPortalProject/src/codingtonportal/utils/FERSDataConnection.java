@@ -29,7 +29,7 @@ public class FERSDataConnection {
     
 	
     public FERSDataConnection() throws IOException{
-    	DatabaseProperty conexion= new DatabaseProperty();
+    	PropertyAccess conexion= new PropertyAccess();
     	
     	this.driver=conexion.getProperty("driver");
     	this.url=conexion.getProperty("connection");
