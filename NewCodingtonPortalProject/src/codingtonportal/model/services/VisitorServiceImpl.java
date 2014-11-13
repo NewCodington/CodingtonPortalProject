@@ -140,7 +140,7 @@ public class VisitorServiceImpl implements VisitorDAO {
 		//Where
 		statementSQL.setInt(2, visitor.getIdVisitor());
 		
-		statementSQL.executeQuery();
+		statementSQL.execute();
 		statementSQL.close();
 		conex.close();		     
 	

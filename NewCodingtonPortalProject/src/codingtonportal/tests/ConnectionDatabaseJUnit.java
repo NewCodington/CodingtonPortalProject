@@ -38,5 +38,12 @@ public class ConnectionDatabaseJUnit extends TestCase {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
 
 }

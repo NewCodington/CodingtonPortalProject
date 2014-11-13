@@ -54,7 +54,7 @@ public class VisitorDAOJUnit extends TestCase {
 
 	@Test
 	public void testdeleteVisitor() {
-		Visitor visit= new Visitor(1, "Charla", "dafkj","Explicacion", 
+		Visitor visit= new Visitor(12, "Charla", "dafkj","Explicacion", 
 				"jim", "45.2", "emai", "9874","12",true);
 		try {
 			assertTrue(visitor.deleteVisitor(visit));
@@ -69,7 +69,7 @@ public class VisitorDAOJUnit extends TestCase {
 
 	@Test
 	public void testupdateInformation() {
-		Visitor visit= new Visitor(1, "Pepe", "dafkj","pepe", 
+		Visitor visit= new Visitor(13, "Pepe", "dafkj","pepe", 
 				"jim", "45.2", "emai", "9874","12",true);
 		try {
 			assertTrue(visitor.updateInformation(visit));
@@ -84,7 +84,7 @@ public class VisitorDAOJUnit extends TestCase {
 
 	@Test
 	public void testupdatePassword() {
-		Visitor visit= new Visitor(1, "Charla", "dafkj","Explicacion", 
+		Visitor visit= new Visitor(13, "Charla", "aaaaaa","Explicacion", 
 				"jim", "45.2", "emai", "9874","12",true);
 		try {
 			assertTrue(visitor.updatePassword(visit));
@@ -101,7 +101,7 @@ public class VisitorDAOJUnit extends TestCase {
 	public void testregisterForNewEvent() {
 		Visitor visit= new Visitor(2,1);
 		try {
-			assertTrue(visitor.registerForNewEvent(visit.getIdVisitor(),visit.getIdEvent()));
+			assertTrue(visitor.registerForNewEvent(13,1));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
