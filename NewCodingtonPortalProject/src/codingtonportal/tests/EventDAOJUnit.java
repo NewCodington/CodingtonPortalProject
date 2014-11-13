@@ -52,6 +52,21 @@ public class EventDAOJUnit extends TestCase{
 		}
 	}
 	
+	
+	@Test
+	public void testUpdateSeatsAvailable() {
+		Event events= new Event(001, "Charla", "Explicacion de pelicanos", 1, "2 horas", "17 horas", "divulgativo",125);
+		try {
+			assertTrue(event.updateSeatsAvailable(events));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	@Test
 	public void testDeleteEvent() {
 		Event events= new Event(001, "Charla", "Explicacion de marmotas", 1, "2 horas", "17 horas", "divulgativo",12);
