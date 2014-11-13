@@ -17,14 +17,13 @@ public class EventServiceImpl implements EventDAO {
 		 PropertyAccess conexion= new PropertyAccess();
 		 try {    
 			PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("insertEvent"));
-			statementSQL.setInt(1, event.getEventId());
-			statementSQL.setString(2, event.getName());
-			statementSQL.setString(3, event.getDescription());
-			statementSQL.setInt(4, event.getPlace());
-			statementSQL.setString(5, event.getDuration());
-			statementSQL.setString(6, event.getStartTime());
-			statementSQL.setString(7, event.getEventType());
-			statementSQL.setInt(8, event.getSeatsAvailable());
+			statementSQL.setString(1, event.getName());
+			statementSQL.setString(2, event.getDescription());
+			statementSQL.setInt(3, event.getPlace());
+			statementSQL.setString(4, event.getDuration());
+			statementSQL.setString(5, event.getStartTime());
+			statementSQL.setString(6, event.getEventType());
+			statementSQL.setInt(7, event.getSeatsAvailable());
 			
 			statementSQL.executeUpdate();
 			statementSQL.close();
