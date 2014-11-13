@@ -26,7 +26,7 @@ public class EventDAOJUnit extends TestCase{
 
 	@Test
 	public void testInsertEvent() {
-	    Event events= new Event(001, "Charla", "Explicacion de marmotas", 1, "2 horas", "17 horas", "divulgativo",12);
+	    Event events= new Event(001,"Charla", "Explicacion de marmotas", 1, "2 horas", "17 horas", "divulgativo",12);
 		try {
 			assertTrue(event.insertEvent(events));
 		} catch (IOException e) {

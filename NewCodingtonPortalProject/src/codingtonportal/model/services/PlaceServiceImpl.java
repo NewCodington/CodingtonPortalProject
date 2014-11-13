@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import codingtonportal.model.dao.interfaces.PlaceDAO;
 import codingtonportal.model.domain.Place;
 import codingtonportal.utils.PropertyAccess;
@@ -17,22 +19,24 @@ public class PlaceServiceImpl implements PlaceDAO {
 		 
 		 try {    
 		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("insertplace"));
+		
 		statementSQL.setInt(1, place.getIdPlace());
 		statementSQL.setString(2, place.getName());
-		statementSQL.setString(3, place.getRegion());		
-		statementSQL.setBlob(4, place.getImage());
-		statementSQL.setString(5, place.getAddress());
-		statementSQL.setString(6, place.getDescription());
+		statementSQL.setString(3, place.getRegion());
+		statementSQL.setInt(4, place.getTypePlace());
+		statementSQL.setBlob(5, place.getImage());
+		statementSQL.setString(6, place.getAddress());
+		statementSQL.setString(7, place.getDescription());	
 		
-		
-		statementSQL.executeQuery();
+		statementSQL.executeUpdate();
 		statementSQL.close();
 		conex.close();		     
+		JOptionPane.showMessageDialog(null, "Lugar insertado"); 
 		 } catch (SQLException e) {         
-			 System.out.println(e.getMessage());  
-			 
+			 JOptionPane.showMessageDialog(null, "Lugar no insertado");   
+			 return false;
 			 }
-		return false;  
+		return true;  
 		 } 
 	
 	
@@ -43,15 +47,18 @@ public class PlaceServiceImpl implements PlaceDAO {
 		 try {    
 		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("deleteplace"));
 		statementSQL.setInt(1, place.getIdPlace());
-	
-		 statementSQL.executeQuery();		 
-			
+
+		statementSQL.executeUpdate();
 		 statementSQL.close();  
-		 conex.close();    
-	 } catch (SQLException e) {         
-		 System.out.println(e.getMessage());  
+		 conex.close();
+		 JOptionPane.showMessageDialog(null, "Lugar eliminado");		 
+		 
+	 } catch (SQLException e) {       
+
+		 JOptionPane.showMessageDialog(null, "Lugar no eliminado");
+		 return false;
 	 }
-		return false;  
+		return true;  
  } 
 
 		 
@@ -64,17 +71,21 @@ public class PlaceServiceImpl implements PlaceDAO {
 				PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("updateplace"));
 				statementSQL.setString(1, place.getName());
 				statementSQL.setString(2, place.getRegion());
-				statementSQL.setBlob(3, place.getImage());
-				statementSQL.setString(4, place.getAddress());
-				statementSQL.setString(5, place.getDescription());
-				statementSQL.setInt(6, place.getIdPlace());		
-				
-				statementSQL.executeQuery();
+				statementSQL.setInt(3,place.getTypePlace());
+				statementSQL.setBlob(4, place.getImage());
+				statementSQL.setString(5, place.getAddress());
+				statementSQL.setString(6, place.getDescription());		
+				statementSQL.setInt(7, place.getIdPlace());
+			
+				statementSQL.executeUpdate();
 				statementSQL.close();
 				conex.close();		     
+				JOptionPane.showMessageDialog(null, "Lugar actualizado"); 
 		} catch (SQLException e) {         
-					 System.out.println(e.getMessage());  
+			JOptionPane.showMessageDialog(null,e);
+					 return false;
 		}
-		return false;  
+		return true;  
+		
 	} 
 }
