@@ -32,7 +32,7 @@ public class VisitorServiceImpl implements VisitorDAO {
 			statementSQL.setString(9, visitor.getPassword());
 			statementSQL.setBoolean(10, visitor.isAdmin());
 	
-			statementSQL.executeQuery();
+			statementSQL.executeUpdate();
 			statementSQL.close();
 			conex.close();		     
 		
@@ -58,7 +58,7 @@ public class VisitorServiceImpl implements VisitorDAO {
 		statementSQL.setString(2, Password);
 		
 
-		statementSQL.executeQuery();
+		statementSQL.execute();
 		statementSQL.close();
 		conex.close();		     
 
@@ -81,7 +81,7 @@ public class VisitorServiceImpl implements VisitorDAO {
 		
 		statementSQL.setInt(1, visitor.getIdVisitor());
 		
-		statementSQL.executeQuery();
+		statementSQL.execute();
 		statementSQL.close();
 		conex.close();		     
 	  
@@ -113,7 +113,7 @@ public class VisitorServiceImpl implements VisitorDAO {
 		//Where
 		statementSQL.setInt(8, visitor.getIdVisitor());
 		
-		statementSQL.executeQuery();
+		statementSQL.executeUpdate();
 		statementSQL.close();
 		conex.close();		     
 		
