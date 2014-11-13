@@ -70,7 +70,6 @@ public class EventServiceImpl implements EventDAO {
 			statementSQL.setInt(7, event.getSeatsAvailable());
 			statementSQL.setInt(8, event.getEventId());
 			
-			System.out.println(statementSQL);
 			statementSQL.executeUpdate();
 			statementSQL.close();
 			conex.close();		     
