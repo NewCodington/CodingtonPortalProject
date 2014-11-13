@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import codingtonportal.model.dao.interfaces.VisitorDAO;
 import codingtonportal.model.domain.Visitor;
-import codingtonportal.utils.DatabaseProperty;
+import codingtonportal.utils.PropertyAccess;
 import codingtonportal.utils.FERSDataConnection;
 
 
@@ -16,7 +16,7 @@ public class VisitorServiceImpl implements VisitorDAO {
 	public Integer insertvisitor(Visitor visitor) throws IOException, ClassNotFoundException   {  
 	
 			 FERSDataConnection conex= new FERSDataConnection(); 
-			 DatabaseProperty conexion= new DatabaseProperty();
+			 PropertyAccess conexion= new PropertyAccess();
 			 try {    
 			//PreparedStatemnt for dynamic data	 
 			PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("insertVisitor"));
@@ -47,7 +47,7 @@ public class VisitorServiceImpl implements VisitorDAO {
 	public Integer loginvisitor(String Username, String Password) throws ClassNotFoundException, IOException {
 		
 		FERSDataConnection conex= new FERSDataConnection(); 
-		DatabaseProperty conexion= new DatabaseProperty();
+		PropertyAccess conexion= new PropertyAccess();
 		try {    
 		//PreparedStatemnt for dynamic data	 
 		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("loginVisitor"));
@@ -72,7 +72,7 @@ public class VisitorServiceImpl implements VisitorDAO {
 	
 		
 		FERSDataConnection conex= new FERSDataConnection(); 
-		DatabaseProperty conexion= new DatabaseProperty();
+		PropertyAccess conexion= new PropertyAccess();
 		try {    
 		//PreparedStatemnt for dynamic data	 
 		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("deleteVisitor"));
@@ -95,7 +95,7 @@ public class VisitorServiceImpl implements VisitorDAO {
 	public Integer updateinformation(Visitor visitor) throws ClassNotFoundException, IOException {
 	
 		 FERSDataConnection conex= new FERSDataConnection(); 
-		 DatabaseProperty conexion= new DatabaseProperty();
+		 PropertyAccess conexion= new PropertyAccess();
 		 try {    
 		//PreparedStatemnt for dynamic data	 
 		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("updateVisitor"));
@@ -126,7 +126,7 @@ public class VisitorServiceImpl implements VisitorDAO {
 	public Integer updatepassword(Visitor visitor) throws IOException, ClassNotFoundException {
 		
 		 FERSDataConnection conex= new FERSDataConnection(); 
-		 DatabaseProperty conexion= new DatabaseProperty();
+		 PropertyAccess conexion= new PropertyAccess();
 		 try {    
 		//PreparedStatemnt for dynamic data	 
 		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("updatepassword"));
@@ -154,7 +154,7 @@ public class VisitorServiceImpl implements VisitorDAO {
 	public Integer registerevent(int IdUser, int IdEvent) throws ClassNotFoundException, IOException {
 		
 		 FERSDataConnection conex= new FERSDataConnection(); 
-		 DatabaseProperty conexion= new DatabaseProperty();
+		 PropertyAccess conexion= new PropertyAccess();
 		 try {    
 		//PreparedStatemnt for dynamic data	 
 		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("registerevent"));
@@ -178,7 +178,7 @@ public class VisitorServiceImpl implements VisitorDAO {
 	public Integer unregisterevent(int IdUser, int IdEvent) throws IOException, ClassNotFoundException {
 		
 		 FERSDataConnection conex= new FERSDataConnection(); 
-		 DatabaseProperty conexion= new DatabaseProperty();
+		 PropertyAccess conexion= new PropertyAccess();
 		 try {    
 		//PreparedStatemnt for dynamic data	 
 		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("unregisterevent"));
@@ -204,7 +204,7 @@ public class VisitorServiceImpl implements VisitorDAO {
 		
 		
 		FERSDataConnection conex= new FERSDataConnection(); 
-		 DatabaseProperty conexion= new DatabaseProperty();
+		 PropertyAccess conexion= new PropertyAccess();
 		 try {    
 		//PreparedStatemnt for dynamic data	 
 		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("searchevent"));
@@ -226,7 +226,7 @@ public class VisitorServiceImpl implements VisitorDAO {
 	public Integer viewevent() throws ClassNotFoundException, IOException {
 		
 		FERSDataConnection conex= new FERSDataConnection(); 
-		 DatabaseProperty conexion= new DatabaseProperty();
+		 PropertyAccess conexion= new PropertyAccess();
 		 try {    
 		//PreparedStatemnt for dynamic data	 
 		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("viewevent"));
