@@ -25,7 +25,7 @@ public class EventDAOJUnit extends TestCase{
 	}
 
 	@Test
-	public void testInsertevent() {
+	public void testInsertEvent() {
 	    Event events= new Event(001, "Charla", "Explicacion de marmotas", 1, "2 horas", "17 horas", "divulgativo",12);
 		try {
 			assertTrue(event.insertEvent(events));
@@ -37,9 +37,38 @@ public class EventDAOJUnit extends TestCase{
 			e.printStackTrace();
 		}
 	}
-
+	
 	@Test
-	public void testDeleteevent() {
+	public void testUpdateEvent() {
+		Event events= new Event(001, "Charla", "Explicacion de pelicanos", 1, "2 horas", "17 horas", "divulgativo",15);
+		try {
+			assertTrue(event.updateEvent(events));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	@Test
+	public void testUpdateSeatsAvailable() {
+		Event events= new Event(001, "Charla", "Explicacion de pelicanos", 1, "2 horas", "17 horas", "divulgativo",125);
+		try {
+			assertTrue(event.updateSeatsAvailable(events));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testDeleteEvent() {
 		Event events= new Event(001, "Charla", "Explicacion de marmotas", 1, "2 horas", "17 horas", "divulgativo",12);
 		try {
 			assertTrue(event.deleteEvent(events));
