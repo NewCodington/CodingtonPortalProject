@@ -13,7 +13,7 @@ import codingtonportal.utils.FERSDataConnection;
 
 public class VisitorServiceImpl implements VisitorDAO {
 
-	public Integer insertvisitor(Visitor visitor) throws IOException, ClassNotFoundException   {  
+	public boolean insertVisitor(Visitor visitor) throws IOException, ClassNotFoundException   {  
 	
 			 FERSDataConnection conex= new FERSDataConnection(); 
 			 PropertyAccess conexion= new PropertyAccess();
@@ -32,19 +32,20 @@ public class VisitorServiceImpl implements VisitorDAO {
 			statementSQL.setString(9, visitor.getPassword());
 			statementSQL.setBoolean(10, visitor.isAdmin());
 	
-			statementSQL.executeQuery();
+			statementSQL.executeUpdate();
 			statementSQL.close();
 			conex.close();		     
 		
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
 			 //JOptionPane.showMessageDialog(null, "No se Registro la persona");   
-			 }
-			return null;  
+		 return false;	
+		 }
+			return true;  
 		 } 
 	
 
-	public Integer loginvisitor(String Username, String Password) throws ClassNotFoundException, IOException {
+	public boolean loginVisitor(String Username, String Password) throws ClassNotFoundException, IOException {
 		
 		FERSDataConnection conex= new FERSDataConnection(); 
 		PropertyAccess conexion= new PropertyAccess();
@@ -57,18 +58,19 @@ public class VisitorServiceImpl implements VisitorDAO {
 		statementSQL.setString(2, Password);
 		
 
-		statementSQL.executeQuery();
+		statementSQL.execute();
 		statementSQL.close();
 		conex.close();		     
 
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
+			 return false;
 		}
-		return null;  	
+		return true;  	
 	}
 
 
-	public Integer deletevisitor(Visitor visitor) throws IOException, ClassNotFoundException {
+	public boolean deleteVisitor(Visitor visitor) throws IOException, ClassNotFoundException {
 	
 		
 		FERSDataConnection conex= new FERSDataConnection(); 
@@ -79,20 +81,21 @@ public class VisitorServiceImpl implements VisitorDAO {
 		
 		statementSQL.setInt(1, visitor.getIdVisitor());
 		
-		statementSQL.executeQuery();
+		statementSQL.execute();
 		statementSQL.close();
 		conex.close();		     
 	  
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
+			 return false;
 			
 			 }
-		return null;  	
+		return true;  	
 	}
 
 
 
-	public Integer updateinformation(Visitor visitor) throws ClassNotFoundException, IOException {
+	public boolean updateInformation(Visitor visitor) throws ClassNotFoundException, IOException {
 	
 		 FERSDataConnection conex= new FERSDataConnection(); 
 		 PropertyAccess conexion= new PropertyAccess();
@@ -110,20 +113,21 @@ public class VisitorServiceImpl implements VisitorDAO {
 		//Where
 		statementSQL.setInt(8, visitor.getIdVisitor());
 		
-		statementSQL.executeQuery();
+		statementSQL.executeUpdate();
 		statementSQL.close();
 		conex.close();		     
 		
 		 } catch (SQLException e) {         
-			 System.out.println(e.getMessage());  
+			 System.out.println(e.getMessage()); 
+			 return false;
 			
 			 }
-		return null;  		
+		return true;  		
 	}
 
 
 
-	public Integer updatepassword(Visitor visitor) throws IOException, ClassNotFoundException {
+	public boolean updatePassword(Visitor visitor) throws IOException, ClassNotFoundException {
 		
 		 FERSDataConnection conex= new FERSDataConnection(); 
 		 PropertyAccess conexion= new PropertyAccess();
@@ -142,16 +146,16 @@ public class VisitorServiceImpl implements VisitorDAO {
 	
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
-			
+			return false;
 			 }
-		return null;  	
+		return true;  	
 		
 		
 	}
 
 
 
-	public Integer registerevent(int IdUser, int IdEvent) throws ClassNotFoundException, IOException {
+	public boolean registerForNewEvent(int idVisitor, int idEvent) throws ClassNotFoundException, IOException {
 		
 		 FERSDataConnection conex= new FERSDataConnection(); 
 		 PropertyAccess conexion= new PropertyAccess();
@@ -160,8 +164,8 @@ public class VisitorServiceImpl implements VisitorDAO {
 		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("registerevent"));
 	
 		
-		statementSQL.setInt(1, IdUser);
-		statementSQL.setInt(2, IdEvent);
+		statementSQL.setInt(1, idVisitor);
+		statementSQL.setInt(2, idEvent);
 		
 		statementSQL.executeQuery();
 		statementSQL.close();
@@ -169,13 +173,14 @@ public class VisitorServiceImpl implements VisitorDAO {
 		
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  	  
-	 }
-		return IdEvent; 
+	return false; 
+		 }
+		return true; 
 	}
 
 
 
-	public Integer unregisterevent(int IdUser, int IdEvent) throws IOException, ClassNotFoundException {
+	public boolean unregisterForEvent(int idVisitor, int idEvent) throws IOException, ClassNotFoundException {
 		
 		 FERSDataConnection conex= new FERSDataConnection(); 
 		 PropertyAccess conexion= new PropertyAccess();
@@ -184,8 +189,8 @@ public class VisitorServiceImpl implements VisitorDAO {
 		PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("unregisterevent"));
 	
 		
-		statementSQL.setInt(1, IdUser);
-		statementSQL.setInt(2, IdEvent);
+		statementSQL.setInt(1, idVisitor);
+		statementSQL.setInt(2, idEvent);
 		
 		statementSQL.executeQuery();
 		statementSQL.close();
@@ -194,13 +199,14 @@ public class VisitorServiceImpl implements VisitorDAO {
 		 
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
+			 return false;
 			 
 	  }
-		return IdEvent;  	
+		return true;  	
 	}
 
 	
-	public Integer searchevent(String Search) throws IOException, ClassNotFoundException {
+	public boolean searchEvent(String Search) throws IOException, ClassNotFoundException {
 		
 		
 		FERSDataConnection conex= new FERSDataConnection(); 
@@ -216,14 +222,15 @@ public class VisitorServiceImpl implements VisitorDAO {
 		conex.close();		     
 
 		 } catch (SQLException e) {         
-			 System.out.println(e.getMessage());  
+			 System.out.println(e.getMessage()); 
+			 return false;
 			  
 			 }
-		return null;  	
+		return true;  	
 	}
 
 
-	public Integer viewevent() throws ClassNotFoundException, IOException {
+	public boolean viewEvent() throws ClassNotFoundException, IOException {
 		
 		FERSDataConnection conex= new FERSDataConnection(); 
 		 PropertyAccess conexion= new PropertyAccess();
@@ -237,88 +244,24 @@ public class VisitorServiceImpl implements VisitorDAO {
 		
 		 } catch (SQLException e) {         
 			 System.out.println(e.getMessage());  
+			 return false;
 			 
 			 }
-		return null; 	
+		return true; 	
 	}
 
 
-	@Override
-	public Integer insertVisitor(Visitor visitor) throws IOException,
-			ClassNotFoundException {
-				return null;
-		// TODO Auto-generated method stub
-		
-	}
 
 
-	@Override
-	public Integer loginVisitor(String Username, String Password)
-			throws ClassNotFoundException, IOException {
-				return null;
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 
-	@Override
-	public Integer deleteVisitor(Visitor visitor) throws IOException,
-			ClassNotFoundException {
-				return null;
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 
-	@Override
-	public Integer updateInformation(Visitor visitor)
-			throws ClassNotFoundException, IOException {
-				return null;
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 
-	@Override
-	public Integer updatePassword(Visitor visitor) throws IOException,
-			ClassNotFoundException {
-				return null;
-		// TODO Auto-generated method stub
-		
-	}
 
 
-	@Override
-	public Integer registerForNewEvent(int IdUser, int IdEvent)
-			throws ClassNotFoundException, IOException {
-				return IdEvent;
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public Integer unregisterForEvent(int IdUser, int IdEvent) throws IOException,
-			ClassNotFoundException {
-				return IdEvent;
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public Integer searchEvent(String Search) throws IOException,
-			ClassNotFoundException {
-				return null;
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public Integer viewEvent() throws ClassNotFoundException, IOException {
-		return null;
-		// TODO Auto-generated method stub
-		
-	}
 }
