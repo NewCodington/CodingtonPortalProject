@@ -2,7 +2,7 @@
 
 package codingtonportal.model.domain;
 
-public class Admin extends User {
+public class Admin  {
 
 	
 	//Atributos
