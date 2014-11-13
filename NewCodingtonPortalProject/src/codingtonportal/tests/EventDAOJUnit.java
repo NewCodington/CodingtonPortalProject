@@ -26,7 +26,7 @@ public class EventDAOJUnit extends TestCase{
 
 	@Test
 	public void testInsertEvent() {
-	    Event events= new Event(001,"Charla", "Explicacion de marmotas", 1, "2 horas", "17 horas", "divulgativo",12);
+	    Event events= new Event(001,"Charla", "Explicacion de marmotas", 3, "2 horas", "17 horas", "divulgativo",12);
 		try {
 			assertTrue(event.insertEvent(events));
 		} catch (IOException e) {
@@ -40,7 +40,7 @@ public class EventDAOJUnit extends TestCase{
 	
 	@Test
 	public void testUpdateEvent() {
-		Event events= new Event(001, "Charla", "Explicacion de pelicanos", 1, "2 horas", "17 horas", "divulgativo",15);
+		Event events= new Event(8, "Charla", "Explicacion de pelicanos", 3, "2 horas", "17 horas", "divulgativo",15);
 		try {
 			assertTrue(event.updateEvent(events));
 		} catch (IOException e) {
@@ -55,7 +55,7 @@ public class EventDAOJUnit extends TestCase{
 	
 	@Test
 	public void testUpdateSeatsAvailable() {
-		Event events= new Event(001, "Charla", "Explicacion de pelicanos", 1, "2 horas", "17 horas", "divulgativo",125);
+		Event events= new Event(8, "Charla", "Explicacion de pelicanos", 3, "2 horas", "17 horas", "divulgativo",125);
 		try {
 			assertTrue(event.updateSeatsAvailable(events));
 		} catch (IOException e) {
@@ -69,7 +69,7 @@ public class EventDAOJUnit extends TestCase{
 	
 	@Test
 	public void testDeleteEvent() {
-		Event events= new Event(001, "Charla", "Explicacion de marmotas", 1, "2 horas", "17 horas", "divulgativo",12);
+		Event events= new Event(8, "Charla", "Explicacion de marmotas", 3, "2 horas", "17 horas", "divulgativo",12);
 		try {
 			assertTrue(event.deleteEvent(events));
 		} catch (IOException e) {
