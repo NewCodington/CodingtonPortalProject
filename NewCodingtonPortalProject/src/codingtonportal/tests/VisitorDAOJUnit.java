@@ -6,13 +6,10 @@ import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import codingtonportal.model.domain.Event;
 import codingtonportal.model.domain.Visitor;
-import codingtonportal.model.services.EventServiceImpl;
 import codingtonportal.model.services.VisitorServiceImpl;
 
-public class VisitorDAOJUnit extends TestCase{
+public class VisitorDAOJUnit extends TestCase {
 	VisitorServiceImpl visitor;
 
 	@Before
@@ -72,7 +69,7 @@ public class VisitorDAOJUnit extends TestCase{
 
 	@Test
 	public void testupdateInformation() {
-		Visitor visit= new Visitor(1, "Charla", "dafkj","Explicacion", 
+		Visitor visit= new Visitor(1, "Pepe", "dafkj","pepe", 
 				"jim", "45.2", "emai", "9874","12",true);
 		try {
 			assertTrue(visitor.updateInformation(visit));

@@ -40,7 +40,7 @@ public class EventDAOJUnit extends TestCase{
 	
 	@Test
 	public void testUpdateEvent() {
-		Event events= new Event(8, "Charla", "Explicacion de pelicanos", 3, "2 horas", "17 horas", "divulgativo",15);
+		Event events= new Event(9, "Charla", "Explicacion de pelicanos", 3, "2 horas", "17 horas", "divulgativo",15);
 		try {
 			assertTrue(event.updateEvent(events));
 		} catch (IOException e) {

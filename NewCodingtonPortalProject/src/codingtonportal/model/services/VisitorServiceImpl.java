@@ -21,16 +21,16 @@ public class VisitorServiceImpl implements VisitorDAO {
 			//PreparedStatemnt for dynamic data	 
 			PreparedStatement statementSQL = conex.getConnection().prepareStatement(conexion.getProperty("insertVisitor"));
 			
-			statementSQL.setInt(1, visitor.getIdVisitor());
-			statementSQL.setString(2, visitor.getFirstName());
-			statementSQL.setString(3, visitor.getLastName());
-			statementSQL.setString(4, visitor.getDni());
-			statementSQL.setString(5, visitor.getEmail());
-			statementSQL.setString(6, visitor.getPhoneNumber());
-			statementSQL.setString(7, visitor.getAddress());
-			statementSQL.setString(8, visitor.getUserName());
-			statementSQL.setString(9, visitor.getPassword());
-			statementSQL.setBoolean(10, visitor.isAdmin());
+			//statementSQL.setInt(1, visitor.getIdVisitor());
+			statementSQL.setString(1, visitor.getFirstName());
+			statementSQL.setString(2, visitor.getLastName());
+			statementSQL.setString(3, visitor.getDni());
+			statementSQL.setString(4, visitor.getEmail());
+			statementSQL.setString(5, visitor.getPhoneNumber());
+			statementSQL.setString(6, visitor.getAddress());
+			statementSQL.setString(7, visitor.getUserName());
+			statementSQL.setString(8, visitor.getPassword());
+			statementSQL.setBoolean(9, visitor.isAdmin());
 	
 			statementSQL.executeUpdate();
 			statementSQL.close();
