@@ -52,7 +52,7 @@ public class EventDAOJUnit extends TestCase{
 		}
 	}
 	
-	
+	/*
 	@Test
 	public void testUpdateSeatsAvailable() {
 		Event events= new Event(8, "Charla", "Explicacion de pelicanos", 3, "2 horas", "17 horas", "divulgativo",125);
@@ -66,6 +66,8 @@ public class EventDAOJUnit extends TestCase{
 			e.printStackTrace();
 		}
 	}
+	
+	*/
 	
 	@Test
 	public void testDeleteEvent() {
