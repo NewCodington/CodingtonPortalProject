@@ -100,5 +100,4 @@ public class EventServiceImpl implements EventDAO {
 		return true;  
 	}
 	*/
-	
 }
