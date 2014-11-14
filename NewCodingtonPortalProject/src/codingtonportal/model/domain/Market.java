@@ -6,7 +6,7 @@ public class Market extends Place {
 	private int idMarket;
 	private String typeMarket;
 	
-	//Constructor
+	//Constructor de la clase market
 	Market(){
 		this.idMarket=0;
 		this.typeMarket=null;
