@@ -8,5 +8,4 @@ public interface EventDAO {
 	public boolean insertEvent(Event event) throws IOException, ClassNotFoundException;
 	public boolean deleteEvent(Event event) throws IOException, ClassNotFoundException;
 	public boolean updateEvent(Event event) throws IOException, ClassNotFoundException;
-	public boolean updateSeatsAvailable(Event event) throws ClassNotFoundException, IOException;
 }
