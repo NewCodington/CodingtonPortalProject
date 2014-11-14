@@ -99,9 +99,9 @@ public class VisitorDAOJUnit extends TestCase {
 
 	@Test
 	public void testregisterForNewEvent() {
-		Visitor visit= new Visitor(2,1);
+		Visitor visit= new Visitor(13,11);
 		try {
-			assertTrue(visitor.registerForNewEvent(13,1));
+			assertTrue(visitor.registerForNewEvent(visit.getIdVisitor(),visit.getIdEvent()));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -113,7 +113,7 @@ public class VisitorDAOJUnit extends TestCase {
 
 	@Test
 	public void testunregisterForEvent() {
-		Visitor visit= new Visitor(1, 2);
+		Visitor visit= new Visitor(13, 11);
 		try {
 			assertTrue(visitor.unregisterForEvent(visit.getIdVisitor(),visit.getIdEvent()));
 		} catch (IOException e) {
