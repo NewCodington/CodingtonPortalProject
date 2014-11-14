@@ -80,7 +80,7 @@ public class EventServiceImpl implements EventDAO {
 		return true;  
 	}
 
-
+/*
 	@Override
 	public boolean updateSeatsAvailable(Event event) throws ClassNotFoundException, IOException {
 		FERSDataConnection conex= new FERSDataConnection(); 
@@ -99,4 +99,6 @@ public class EventServiceImpl implements EventDAO {
 		 	
 		return true;  
 	}
+	*/
+	
 }
