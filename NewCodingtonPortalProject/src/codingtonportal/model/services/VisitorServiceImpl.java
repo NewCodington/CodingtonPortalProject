@@ -167,7 +167,7 @@ public class VisitorServiceImpl implements VisitorDAO {
 		statementSQL.setInt(1, idVisitor);
 		statementSQL.setInt(2, idEvent);
 		
-		statementSQL.executeQuery();
+		statementSQL.execute();
 		statementSQL.close();
 		conex.close();		     
 		
@@ -192,7 +192,7 @@ public class VisitorServiceImpl implements VisitorDAO {
 		statementSQL.setInt(1, idVisitor);
 		statementSQL.setInt(2, idEvent);
 		
-		statementSQL.executeQuery();
+		statementSQL.execute();
 		statementSQL.close();
 		conex.close();		     
 		
